@@ -9,14 +9,10 @@ Jeff
 ### Links and Resources
 * [submission PR](https://github.com/JeffLawrence1/lab-14/pull/1)
 * [travis](https://www.travis-ci.com/jeff-401-js/lab-14)
-* [heroku]()
-
+* [heroku](https://fierce-tundra-51744.herokuapp.com/)
 
 #### Documentation
-* [UML]()
-
-### Modules
-
+* [UML](https://photos.app.goo.gl/cvPCpcn4SpdhPJ5TA)
 
 ### Setup
 #### `.env` requirements
@@ -33,7 +29,25 @@ Jeff
   * starter code endpoint not used in this project.
 * Endpoint: `/oauth`
   * authorization route
-  
+* Endpoint: `/roles`
+  * initialize roles
+* Endpoint `/public-stuff`
+  * auth route
+* Endpoint `/hidden-stuff`
+  * hidden stuff
+* Endpoint `/something-to-read`
+  * read
+* Endpoint `/create-a-thing`
+  * create
+* Endpoint `/update`
+  * update
+* Endpoint `/jp`
+  * patch/update
+* Endpoint `/bye-bye`
+  * delete
+* Endpoint `/everything`
+  * get all
+
 #### Tests
 * How do you run tests?
 npm test `filename.test.js`
