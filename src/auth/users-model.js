@@ -18,10 +18,14 @@ const users = new mongoose.Schema({
   role: {type: String, default:'user', enum: ['admin','editor','user']},
 });
 
-const capabilities = {
-  admin: ['create','read','update','delete'],
-  editor: ['create', 'read', 'update'],
-  user: ['read'],
+// const capabilities = {
+//   admin: ['create','read','update','delete'],
+//   editor: ['create', 'read', 'update'],
+//   user: ['read'],
+// };
+
+users.methods.can = function(capability){
+  return capabilities[this.role].includes(capability);
 };
 
 users.pre('save', function(next) {
@@ -70,6 +74,21 @@ users.statics.authenticateBasic = function(auth) {
   return this.findOne(query)
     .then( user => user && user.comparePassword(auth.password) )
     .catch(error => {throw error;});
+};
+
+
+users.statics.authenticateBearer = function(token){
+
+  if(usedTokens.has(token)){
+    return Promise.reject('Invalid token');
+  }
+
+  let parsedToken = jwt.verify(token, process.env.SECRET);
+
+  parsedToken.type !== 'key' && usedTokens.add(token);
+
+  let query = {_id: parsedToken.id};
+  return this.findOne(query);
 };
 
 users.methods.comparePassword = function(password) {
