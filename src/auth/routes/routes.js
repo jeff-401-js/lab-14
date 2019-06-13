@@ -2,10 +2,21 @@
 
 const express = require('express');
 const User = require('../users-model.js');
+const Role = require('../roles-model.js');
 const auth = require('../middleware.js');
 const oauth = require('../oauth/google.js');
 
 const newRouter = express.Router();
+
+const capabilities = {
+  admin: ['create', 'read', 'update', 'delete', 'superuser'],
+  editor: ['create', 'read', 'update'],
+  user: ['read'],
+};
+
+newRouter.post('/roles', (req, res, next) => {
+  
+});
 
 newRouter.get('/public-stuff', (req, res, next) => {
   res.status(200).send('Message for you sir!');
