@@ -18,6 +18,23 @@ const users = new mongoose.Schema({
   role: {type: String, default:'user', enum: ['admin','editor','user']},
 });
 
+users.virtual('roles', {
+  ref: 'roles',
+  localField: 'role',
+  foreignField: 'type',
+  justOne: true,
+});
+
+users.pre('find', function() {
+  try{
+    this.populate('roles');
+  }
+  catch(e) {
+    console.error('error', e);
+  }
+});
+
+
 // const capabilities = {
 //   admin: ['create','read','update','delete'],
 //   editor: ['create', 'read', 'update'],

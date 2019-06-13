@@ -15,26 +15,26 @@ newRouter.get('/hidden-stuff', auth(), (req, res, next) => {
   res.status(200).send('This parrot is dead!');
 });
 
-newRouter.get('/something-to-read', auth(), (req, res, next) => {
+newRouter.get('/something-to-read', auth('read'), (req, res, next) => {
   res.send(200).send('No one expects the inquestion');
 });
 
-newRouter.post('/create-a-thing', auth(), (req, res, next) => {
+newRouter.post('/create-a-thing', auth('create'), (req, res, next) => {
   res.send(200).send('you made a thing');
 });
 
-newRouter.put('/update', auth(), (req, res, next) => {
+newRouter.put('/update', auth('update'), (req, res, next) => {
   res.send(200).send('you updated a thing');
 });
 
-newRouter.patch('/jp', auth(), (req, res, next) => {
+newRouter.patch('/jp', auth('update'), (req, res, next) => {
   res.send(200).send('jpjpjpjp');
 });
 
-newRouter.delete('/bye-bye', auth(), (req, res, next) => {
+newRouter.delete('/bye-bye', auth('delete'), (req, res, next) => {
   res.send(200).send('deleted');
 });
 
-newRouter.get('/everything', auth(), (req, res, next) => {
+newRouter.get('/everything', auth('superuser'), (req, res, next) => {
   res.send(200).send('deleted');
 });
