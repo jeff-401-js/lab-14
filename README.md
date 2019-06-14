@@ -23,6 +23,8 @@ Jeff
 
 #### Running the app
 * `nodemon index.js`
+* Endpoint: `/role`
+  * sets up new role
 * Endpoint: `/signup`
   * starter code endpoint not used in this project.
 * Endpoint: `/signin`
