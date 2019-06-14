@@ -16,18 +16,18 @@ const users = new mongoose.Schema({
   password: {type:String, required:true},
   email: {type: String},
   role: {type: String, default:'user', enum: ['admin','editor','user']},
-});
+}, { toObject:{virtuals:true}, toJSON:{virtuals:true}});
 
-users.virtual('roles', {
+users.virtual('acl', {
   ref: 'roles',
   localField: 'role',
-  foreignField: 'type',
+  foreignField: 'role',
   justOne: true,
 });
 
-users.pre('find', function() {
+users.pre('findOne', function() {
   try{
-    this.populate('roles');
+    this.populate('acl');
   }
   catch(e) {
     console.error('error', e);

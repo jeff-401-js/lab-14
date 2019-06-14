@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 // };
 
 const rolesSchema = new mongoose.Schema({
-  type: {type: String, required:true, enum:['admin', 'editor', 'user']},
+  role: {type: String, required:true},
   capabilities: {type: Array, required:true},
 });
 
