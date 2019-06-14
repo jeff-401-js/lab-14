@@ -41,9 +41,7 @@ users.pre('findOne', function() {
 //   user: ['read'],
 // };
 
-users.methods.can = function(capability){
-  return capabilities[this.role].includes(capability);
-};
+
 
 users.pre('save', function(next) {
   bcrypt.hash(this.password, 10)
@@ -117,7 +115,7 @@ users.methods.generateToken = function(type) {
   
   let token = {
     id: this._id,
-    capabilities: capabilities[this.role],
+    capabilities: this.acl.capabilities,
     type: type || 'user',
   };
   
@@ -130,7 +128,7 @@ users.methods.generateToken = function(type) {
 };
 
 users.methods.can = function(capability) {
-  return capabilities[this.role].includes(capability);
+  return this.acl.capabilities.includes(capability);
 };
 
 users.methods.generateKey = function() {
