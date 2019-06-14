@@ -8,6 +8,7 @@ Jeff
 
 ### Links and Resources
 * [submission PR](https://github.com/jeff-401-js/lab-14/pull/1)
+
 * [travis](https://www.travis-ci.com/jeff-401-js/lab-14)
 * [heroku](https://fierce-tundra-51744.herokuapp.com/)
 
@@ -24,7 +25,7 @@ Jeff
 #### Running the app
 * `nodemon index.js`
 * Endpoint: `/role`
-  * sets up new role
+  * sets up new role addition
 * Endpoint: `/signup`
   * starter code endpoint not used in this project.
 * Endpoint: `/signin`
