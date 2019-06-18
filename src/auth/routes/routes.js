@@ -49,3 +49,5 @@ newRouter.delete('/bye-bye', auth('delete'), (req, res, next) => {
 newRouter.get('/everything', auth('superuser'), (req, res, next) => {
   res.send(200).send('deleted');
 });
+
+module.exports = newRouter;

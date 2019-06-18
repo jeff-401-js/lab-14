@@ -4,7 +4,6 @@ lab 14
 ### Author: Student/Group Name
 Jeff
 
-* [![Build Status](https://www.travis-ci.com/jeff-401-js/lab-04.svg?branch=dev)](https://www.travis-ci.com/jeff-401-js/lab-14)
 
 ### Links and Resources
 * [submission PR](https://github.com/jeff-401-js/lab-14/pull/1)
