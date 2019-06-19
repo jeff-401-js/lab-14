@@ -6,7 +6,9 @@ const Users = require('../users-model.js');
 const authorize = (req) => {
 
   let code = req.query.code;
+  // console.log(process.env.GOOGLE_CLIENT_ID);
   console.log('(1) CODE:', code);
+
 
   return superagent.post('https://www.googleapis.com/oauth2/v4/token')
     .type('form')
@@ -34,7 +36,8 @@ const authorize = (req) => {
     })
     .then(oauthUser => {
       console.log('(4) CREATE ACCOUNT');
-      return Users.createFromOAuth(oauthUser);
+      console.log('HOWDY');
+      return Users.createFromOauth(oauthUser);
     })
     .then(actualRealUser => {
       console.log('(5) ALMOST ...', actualRealUser);
