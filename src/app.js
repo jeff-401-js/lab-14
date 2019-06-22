@@ -13,6 +13,10 @@ const newRouter = require( './auth/routes/routes.js' );
 // Prepare the express app
 const app = express();
 
+const options = require('../docs/config/swagger');
+const expressSwagger = require('express-swagger-generator')(app);
+expressSwagger(options);
+
 // App Level MW
 app.use(cors());
 app.use(morgan('dev'));
