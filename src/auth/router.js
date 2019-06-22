@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * API Router Module
+ * @module src/auth/router
+ */
+
 const express = require('express');
 const authRouter = express.Router();
 const Role = require('./roles-model.js');
@@ -7,20 +12,13 @@ const User = require('./users-model.js');
 const auth = require('./middleware.js');
 const oauth = require('./oauth/google.js');
 
-
-// multi capabilities at the same time
-// const capabilities = {
-//   admin: ['create', 'read', 'update', 'delete', 'superuser'],
-//   editor: ['create', 'read', 'update'],
-//   user: ['read'],
-// };
-
-// Object.keys(capabilities).map(role => {
-//   let saves = [];
-//   let newRecord = new Role({role, capabilities: capabilities[role]});
-//   saves.push(newRecord.save);
-// });
-// Promise.all(saves);
+/**
+ * post route assign role
+ * @route POST /{role}
+ * @consumes application/json application/xml
+ * @returns {Object} 500 - Server error
+ * @returns {Object} 200 - { count: 2, results: [{}, {}]}
+ */
 
 authRouter.post('/role', (req, res, next) => {
 
@@ -31,6 +29,14 @@ authRouter.post('/role', (req, res, next) => {
     })
     .catch(next);
 });
+
+/**
+ * signup user
+ * @route POST /{signup}
+ * @consumes application/json application/xml
+ * @returns {Object} 500 - Server error
+ * @returns {Object} 200 - adds new user and token to request object
+ */
 
 authRouter.post('/signup', (req, res, next) => {
   let user = new User(req.body);
@@ -45,10 +51,26 @@ authRouter.post('/signup', (req, res, next) => {
     .catch(next);
 });
 
-authRouter.post('/signin', auth(), (req, res, next) => {
+/**
+ * signin user
+ * @route GET /{signin}
+ * @consumes application/json application/xml
+ * @returns {Object} 500 - Server error
+ * @returns {Object} 200 - validates user signing in and adds token to request object
+ */
+
+authRouter.get('/signin', auth(), (req, res, next) => {
   res.cookie('auth', req.token);
   res.send(req.token);
 });
+
+/**
+ * oauth user
+ * @route GET /{oauth}
+ * @consumes application/json application/xml
+ * @returns {Object} 500 - Server error
+ * @returns {Object} 200 - valid user using google id
+ */
 
 authRouter.get('/oauth', (req,res,next) => {
   oauth.authorize(req)
@@ -58,9 +80,22 @@ authRouter.get('/oauth', (req,res,next) => {
     .catch(next);
 });
 
+/**
+ * Save key
+ * @route POST /{key}
+ * @consumes application/json application/xml
+ * @returns {Object} 500 - Server error
+ * @returns {Object} 200 - generates key and sends it
+ */
+
 authRouter.post('/key', auth, (req,res,next) => {
   let key = req.user.generateKey();
   res.status(200).send(key);
 });
+
+/**
+ * Export object with authrouter
+ * @type {Object}
+ */
 
 module.exports = authRouter;
