@@ -20,6 +20,10 @@ Jeff
 * `SECRET` - somestring
 * `MONGODB_URI` - mongodb://localhost:27017/class-13
 * `EXPIRE_TIME` - 15m
+* `SINGLE_USE_TOKENS` - false
+* `GOOGLE_CLIENT_ID` - lkjlkjlkjkl
+* `GOOGLE_CLIENT_SECRET` - ljlkjljljk
+
 
 #### Running the app
 * `nodemon index.js`
