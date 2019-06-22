@@ -7,12 +7,33 @@ Jeff
 
 ### Links and Resources
 * [submission PR](https://github.com/jeff-401-js/lab-14/pull/1)
-
 * [travis](https://www.travis-ci.com/jeff-401-js/lab-14)
 * [heroku](https://fierce-tundra-51744.herokuapp.com/)
 
 #### Documentation
 * [UML](https://photos.app.goo.gl/cvPCpcn4SpdhPJ5TA)
+* [JSDOC](https://fierce-tundra-51744.herokuapp.com/docs)
+* [Swagger](https://fierce-tundra-51744.herokuapp.com/api-docs)
+
+
+#### Modules
+* `index.js`
+* `src folder`
+*   * `auth folder`
+*   * * `oauth folder`
+*   * * * `google.js` - `exports - authorize`
+*   * * `routes folder`
+*   * * * `routes.js` - `exports - newRouter`
+*   * * `middleware.js` - `exports - auth`
+*   * * `roles-model.js` - `exports - rolesSchema`
+*   * * `router.js` - `exports - authRouter`
+*   * * `users-model.js` - `exports - usersSchema`
+*   * * `utils.js` - `exports - utils object containing authbearer, authbasic and authenticate`
+*   * `middleware folder`
+*   * * `404.js` - `exports - 404 error`
+*   * * `500.js` - `exports - 500 error`
+*   * `app.js`
+
 
 ### Setup
 *  `npm i`
@@ -20,7 +41,7 @@ Jeff
 #### `.env` requirements
 * `PORT` - 3000
 * `SECRET` - somestring
-* `MONGODB_URI` - mongodb://localhost:27017/class-13
+* `MONGODB_URI` - mongodb://localhost:27017/clsdfssdf
 * `EXPIRE_TIME` - 15m
 * `SINGLE_USE_TOKENS` - false
 * `GOOGLE_CLIENT_ID` - lkjlkjlkjkl
