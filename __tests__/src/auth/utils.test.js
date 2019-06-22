@@ -3,7 +3,7 @@
 process.env.SECRET='test';
 
 const utils = require('../../../src/auth/utils.js').server;
-const supergoose = require('../supergoose.js');
+const supergoose = require('../../supergoose.js');
 
 describe('Utils functions', () => {
 
