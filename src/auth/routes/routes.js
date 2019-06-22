@@ -8,14 +8,15 @@ const oauth = require('../oauth/google.js');
 
 const newRouter = express.Router();
 
-const capabilities = {
-  admin: ['create', 'read', 'update', 'delete', 'superuser'],
-  editor: ['create', 'read', 'update'],
-  user: ['read'],
-};
 
-newRouter.post('/roles', (req, res, next) => {
-  
+newRouter.post('/role', (req, res, next) => {
+
+  let role = new Role(req.body);
+  role.save()
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(next);
 });
 
 newRouter.get('/public-stuff', (req, res, next) => {
