@@ -28,27 +28,27 @@ newRouter.get('/hidden-stuff', auth(), (req, res, next) => {
 });
 
 newRouter.get('/something-to-read', auth('read'), (req, res, next) => {
-  res.send(200).send('No one expects the inquestion');
+  res.status(200).send('No one expects the inquestion');
 });
 
 newRouter.post('/create-a-thing', auth('create'), (req, res, next) => {
-  res.send(200).send('you made a thing');
+  res.status(200).send('you made a thing');
 });
 
 newRouter.put('/update', auth('update'), (req, res, next) => {
-  res.send(200).send('you updated a thing');
+  res.status(200).send('you updated a thing');
 });
 
 newRouter.patch('/jp', auth('update'), (req, res, next) => {
-  res.send(200).send('jpjpjpjp');
+  res.status(200).send('jpjpjpjp');
 });
 
 newRouter.delete('/bye-bye', auth('delete'), (req, res, next) => {
-  res.send(200).send('deleted');
+  res.status(200).send('deleted');
 });
 
 newRouter.get('/everything', auth('superuser'), (req, res, next) => {
-  res.send(200).send('deleted');
+  res.status(200).send('deleted');
 });
 
 module.exports = newRouter;
