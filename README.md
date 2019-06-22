@@ -15,6 +15,8 @@ Jeff
 * [UML](https://photos.app.goo.gl/cvPCpcn4SpdhPJ5TA)
 
 ### Setup
+*  `npm i`
+
 #### `.env` requirements
 * `PORT` - 3000
 * `SECRET` - somestring
@@ -24,36 +26,55 @@ Jeff
 * `GOOGLE_CLIENT_ID` - lkjlkjlkjkl
 * `GOOGLE_CLIENT_SECRET` - ljlkjljljk
 
+* `server restart may be required occasionally`
+
+* `Add Roles with capabilities to db by going to --> localhost:3000/role in postman then adding`
+
+{
+	"role": "user",
+	"capabilities": ["read"]
+}
+
+{
+	"role": "editor",
+	"capabilities": ["create", "read", "update"]
+}
+
+{
+	"role": "admin",
+	"capabilities": ["create", "read", "update", "delete", "superuser"]
+}
+
 
 #### Running the app
-* `nodemon index.js`
+
+* `npm start`
+
 * Endpoint: `/role`
-  * sets up new role addition
+  * allows adding of roles through this route and postman
 * Endpoint: `/signup`
-  * starter code endpoint not used in this project.
+  * route to signup a new user with a username, pwd, email and role/capabilities
 * Endpoint: `/signin`
-  * starter code endpoint not used in this project.
+  * route to signin a user with username and pwd
 * Endpoint: `/oauth`
-  * authorization route
-* Endpoint: `/roles`
-  * initialize roles
+  * route to authenticate user throug oauth using their google login info
 * Endpoint `/public-stuff`
-  * auth route
+  * public stuff route no auth required
 * Endpoint `/hidden-stuff`
-  * hidden stuff
+  * hidden stuff route basic auth required
 * Endpoint `/something-to-read`
-  * read
+  * auth route that requires "read" auth
 * Endpoint `/create-a-thing`
-  * create
+  * create route that requires "create" auth
 * Endpoint `/update`
-  * update
+  * update route that requires "update" auth
 * Endpoint `/jp`
-  * patch/update
+  * patch/update route that requires "update" auth
 * Endpoint `/bye-bye`
-  * delete
+  * delete route that requires "delete" auth
 * Endpoint `/everything`
-  * get all
+  * get all route that requires "superuser" auth
 
 #### Tests
 * How do you run tests?
-npm test `filename.test.js`
+* `npm test` `filename`
